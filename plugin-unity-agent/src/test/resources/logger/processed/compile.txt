@@ -9,3 +9,6 @@ Compilation succeeded - 1 warning(s)
 Noop
 ##teamcity[blockClosed name='Compile']
 - Finished compile Library/ScriptAssemblies/Unity.Timeline.dll
+中文
+
+MH-ERROR 自定义错误

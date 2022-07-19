@@ -25,6 +25,7 @@ import jetbrains.buildServer.messages.serviceMessages.Message
 import jetbrains.buildServer.unity.messages.BuildProblem
 import java.util.*
 
+
 class UnityLoggingListener(private val logger: BuildProgressLogger,
                            private val problemsProvider: LineStatusProvider) : ProcessListenerAdapter() {
 
@@ -89,7 +90,7 @@ class UnityLoggingListener(private val logger: BuildProgressLogger,
     private fun logMessage(text: String) {
         val message = currentBlock.getText(text)
         val status = problemsProvider.getLineStatus(message)
-        val serviceMessage = when (status) {
+        var serviceMessage = when (status) {
             LineStatus.Warning -> Message(message, Status.WARNING.text, null).asString()
             LineStatus.Error -> BuildProblem(message).asString()
             else -> message

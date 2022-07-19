@@ -26,7 +26,10 @@ class LineStatusProvider {
     private val patterns = mutableListOf<Pair<Regex, LineStatus>>()
 
     constructor() {
-        patterns.addAll(listOf(
+        patterns.addAll(
+            listOf(
+                Regex("MH-ERROR-EXCEPTION.*") to LineStatus.Error,
+                Regex("MH-WARN.*") to LineStatus.Warning,
                 Regex(".*?warning CS\\d+.*?") to LineStatus.Warning,
                 Regex("WARNING.*") to LineStatus.Warning,
                 Regex(".*?error CS\\d+.*?") to LineStatus.Error,
@@ -39,7 +42,8 @@ class LineStatusProvider {
                 Regex("Couldn't set project path to:.+") to LineStatus.Error,
                 Regex("Failed to activate/update license") to LineStatus.Error,
                 Regex("Error building player .+") to LineStatus.Error
-        ))
+            )
+        )
     }
 
     constructor(lineStatusesFile: File) {
